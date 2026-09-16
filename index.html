@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discover • Offers & Opportunities</title>
+  <meta name="description" content="A clean, modern landing page for offers, articles and useful resources." />
+
+  <style>
+    :root{
+      --lime:#e7ff20;
+      --ink:#101010;
+      --muted:#666;
+      --paper:#f8f8f6;
+      --card:#ffffff;
+      --line:#deded8;
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 15% 10%, #e8f0bd 0, transparent 28%),
+        radial-gradient(circle at 90% 45%, #e8f0bd 0, transparent 24%),
+        var(--paper);
+      line-height:1.45;
+    }
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:1180px;margin:auto;padding:0 22px}
+
+    header{
+      position:sticky;top:0;z-index:20;
+      background:rgba(248,248,246,.9);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+    nav{
+      height:76px;display:flex;align-items:center;justify-content:space-between;
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900}
+    .logo{
+      width:34px;height:34px;border-radius:10px;background:var(--lime);
+      display:grid;place-items:center;font-weight:1000;border:2px solid #111;
+    }
+    .navlinks{display:flex;gap:28px;font-size:14px}
+    .navlinks a:hover{text-decoration:underline}
+    .navbtn{
+      background:#111;color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;
+    }
+
+    .hero{
+      display:grid;grid-template-columns:1fr 1fr;gap:18px;
+      padding:52px 0 30px;
+    }
+    .hero-copy,.hero-visual{
+      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+      min-height:430px;
+    }
+    .hero-copy{padding:54px;display:flex;flex-direction:column;justify-content:center}
+    .eyebrow,.tag{
+      display:inline-flex;align-self:flex-start;border:1px solid #aaa;
+      border-radius:999px;padding:5px 10px;font-size:11px;text-transform:uppercase;
+      letter-spacing:.08em;background:#fff;
+    }
+    h1{font-size:clamp(42px,6vw,76px);line-height:.93;margin:18px 0}
+    .hero-copy p{max-width:480px;color:var(--muted);font-size:17px}
+    .cta{
+      display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+      background:var(--lime);border:2px solid #111;color:#111;
+      padding:14px 21px;border-radius:13px;font-weight:800;margin-top:14px;
+      box-shadow:4px 4px 0 #111;
+    }
+    .hero-visual{
+      background:var(--lime);display:flex;align-items:center;justify-content:center;
+      overflow:hidden;position:relative;
+    }
+    .phone{
+      width:min(62%,310px);aspect-ratio:9/18.5;background:#111;border-radius:38px;
+      padding:9px;transform:rotate(4deg);box-shadow:20px 25px 50px rgba(0,0,0,.25);
+    }
+    .screen{
+      height:100%;border-radius:31px;background:#222;color:white;padding:22px 15px;
+      display:flex;flex-direction:column;gap:12px;
+    }
+    .screen .balance{font-size:30px;font-weight:900}
+    .mini-card{background:#333;border-radius:16px;padding:14px}
+    .mini-row{display:flex;justify-content:space-between;margin-top:12px;font-size:13px}
+
+    section{padding:75px 0}
+    .center{text-align:center}
+    .center h2{font-size:clamp(32px,5vw,52px);line-height:1;margin:15px auto;max-width:760px}
+    .center p{color:var(--muted);max-width:620px;margin:auto}
+
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:38px}
+    .feature{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;min-height:210px}
+    .feature.highlight{background:var(--lime)}
+    .feature h3{margin:25px 0 8px}
+    .icon{font-size:24px}
+
+    .offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:35px}
+    .offer{
+      background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;
+      display:flex;flex-direction:column;min-height:290px;
+    }
+    .offer h3{font-size:25px;margin:20px 0 8px}
+    .offer p{color:var(--muted);font-size:14px}
+    .offer .button{
+      margin-top:auto;display:block;text-align:center;background:#111;color:#fff;
+      padding:13px;border-radius:11px;font-weight:800;
+    }
+    .offer.lime{background:var(--lime)}
+    .offer.lime .button{background:#111}
+
+    .adbox{
+      margin:28px 0;padding:18px;min-height:90px;background:#fff;border:1px dashed #aaa;
+      border-radius:16px;text-align:center;color:#777;font-size:12px;
+    }
+    .ad-label{display:block;text-transform:uppercase;letter-spacing:.1em;font-size:9px;margin-bottom:8px}
+
+    .article{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:stretch;
+    }
+    .article-main,.article-side{
+      background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px;
+    }
+    .article-main h2{font-size:42px;line-height:1;margin:15px 0}
+    .article-side{background:var(--lime)}
+    .check{display:flex;gap:10px;margin:16px 0}
+    .check b{width:26px;height:26px;border:2px solid #111;border-radius:50%;display:grid;place-items:center}
+
+    details{background:#fff;border-bottom:1px solid var(--line);padding:18px 0}
+    summary{cursor:pointer;font-weight:800;list-style:none;display:flex;justify-content:space-between}
+    summary::after{content:"+"}
+    details[open] summary::after{content:"−"}
+    details p{color:var(--muted);max-width:780px}
+
+    footer{padding:35px 0 55px;border-top:1px solid var(--line);font-size:13px;color:#666}
+    .footerrow{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+    @media(max-width:800px){
+      .navlinks{display:none}
+      .hero,.article{grid-template-columns:1fr}
+      .hero-copy{padding:35px;min-height:380px}
+      .hero-visual{min-height:380px}
+      .features,.offer-grid{grid-template-columns:1fr}
+      section{padding:55px 0}
+      h1{font-size:50px}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#"><span class="logo">D</span><span>Discover Hub</span></a>
+      <div class="navlinks">
+        <a href="#offers">Offers</a>
+        <a href="#resources">Resources</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="navbtn" href="#offers">Explore</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Featured opportunities</span>
+        <h1>Discover useful offers in one place.</h1>
+        <p>Explore selected resources, promotions and useful links through a clean, mobile-first page.</p>
+        <a class="cta" href="#offers">Get Started ↗</a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="phone">
+          <div class="screen">
+            <small>YOUR DASHBOARD</small>
+            <div class="balance">Explore</div>
+            <div class="mini-card">
+              <b>Featured offer</b>
+              <div class="mini-row"><span>Learn more</span><span>→</span></div>
+            </div>
+            <div class="mini-card">
+              <b>Useful resources</b>
+              <div class="mini-row"><span>Open</span><span>↗</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AD NETWORK #1: Adcash -->
+    <div class="adbox">
+      <span class="ad-label">Advertisement</span>
+      <!-- PASTE YOUR ADCASH DISPLAY AD CODE HERE -->
+      Adcash display ad placement
+    </div>
+
+    <section id="resources">
+      <div class="center">
+        <span class="tag">Why this page</span>
+        <h2>A simple place for offers, content and useful resources.</h2>
+        <p>Keep the page easy to navigate while giving your visitors several ways to discover your content.</p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="icon">◉</div>
+          <h3>Clean & Simple</h3>
+          <p>Large headings, short descriptions and clear calls to action.</p>
+        </div>
+        <div class="feature highlight">
+          <div class="icon">↗</div>
+          <h3>Multiple Offers</h3>
+          <p>Use buttons to send visitors to your articles, offers or smartlinks.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">▣</div>
+          <h3>Mobile First</h3>
+          <p>Responsive layout designed to work well on phones and smaller screens.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="offers">
+      <div class="center">
+        <span class="tag">Featured</span>
+        <h2>Explore today's opportunities</h2>
+        <p>Replace these three cards with your actual offers or destination pages.</p>
+      </div>
+
+      <div class="offer-grid">
+        <article class="offer">
+          <span class="tag">Offer 01</span>
+          <h3>Featured Opportunity</h3>
+          <p>Add a short, truthful description of the offer here. Keep the call-to-action clear.</p>
+          <a class="button" href="YOUR-OFFER-LINK-1" target="_blank" rel="noopener">Learn More ↗</a>
+        </article>
+
+        <article class="offer lime">
+          <span class="tag">Offer 02</span>
+          <h3>Popular Resource</h3>
+          <p>Add your second destination, article, smartlink or approved affiliate offer here.</p>
+          <a class="button" href="YOUR-OFFER-LINK-2" target="_blank" rel="noopener">Open Offer ↗</a>
+        </article>
+
+        <article class="offer">
+          <span class="tag">Offer 03</span>
+          <h3>Today's Pick</h3>
+          <p>Add another relevant destination. Avoid misleading claims or guaranteed earnings.</p>
+          <a class="button" href="YOUR-OFFER-LINK-3" target="_blank" rel="noopener">View Now ↗</a>
+        </article>
+      </div>
+
+      <!-- AD NETWORK #2: PopAds -->
+      <div class="adbox">
+        <span class="ad-label">Advertisement</span>
+        <!-- PASTE YOUR POPADS CODE / TAG HERE -->
+        PopAds placement
+      </div>
+    </section>
+
+    <section>
+      <div class="article">
+        <div class="article-main">
+          <span class="tag">Editor's note</span>
+          <h2>Give visitors a reason to keep exploring.</h2>
+          <p>Use this area for a short advertorial, guide, product explanation or article excerpt. Link to the full article with the button below.</p>
+          <a class="cta" href="YOUR-ARTICLE-LINK">Read the full article ↗</a>
+        </div>
+
+        <div class="article-side">
+          <span class="tag">Quick links</span>
+          <div class="check"><b>✓</b><span>Featured offers</span></div>
+          <div class="check"><b>✓</b><span>Helpful articles</span></div>
+          <div class="check"><b>✓</b><span>Useful resources</span></div>
+          <div class="check"><b>✓</b><span>Clear calls to action</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AD NETWORK #3: ProPush.me -->
+    <div class="adbox">
+      <span class="ad-label">Advertisement / Notification</span>
+      <!-- PASTE YOUR PROPUSH.ME HEADER SCRIPT HERE.
+           If ProPush gives you a header script, place it inside <head> instead,
+           following their instructions. Do not paste a script here unless their
+           dashboard specifically tells you to. -->
+      ProPush.me integration area
+    </div>
+
+    <section id="faq">
+      <div class="center">
+        <span class="tag">FAQ</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+
+      <div style="max-width:850px;margin:30px auto 0">
+        <details>
+          <summary>What is this page?</summary>
+          <p>A lightweight landing page that combines content, offers and advertising placements.</p>
+        </details>
+        <details>
+          <summary>Can I add my own links?</summary>
+          <p>Yes. Replace each YOUR-OFFER-LINK placeholder with your destination URL.</p>
+        </details>
+        <details>
+          <summary>Where do I add the ad network scripts?</summary>
+          <p>Use the marked Adcash, PopAds and ProPush.me areas. Keep each network's code exactly as supplied by its dashboard and follow its placement requirements.</p>
+        </details>
+        <details>
+          <summary>Can I use this on GitHub Pages?</summary>
+          <p>Yes. This is a static HTML page, so it can be hosted on GitHub Pages or another static host.</p>
+        </details>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footerrow">
+    <span>© 2026 Discover Hub</span>
+    <span>About · Privacy · Contact</span>
+  </div>
+</footer>
+
+</body>
+  </html>
